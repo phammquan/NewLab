@@ -18,6 +18,7 @@ TagManager:
   - chloride
   - natrium
   - nitrogen
+  - Iron
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - 
   - Enviroment
   - Lighting
-  - 
-  - 
+  - Table
+  - Interactable
   - 
   - 
   - 
