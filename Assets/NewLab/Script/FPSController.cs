@@ -9,7 +9,7 @@ public class FPSController : MonoBehaviour
     public bool LockMovement = false;
 
     [Header("Camera Look")]
-    public Transform cameraTransform; // Kéo Camera vào đây
+    public Transform cameraTransform; 
     public float mouseSensitivity = 2.0f;
 
     [Header("Zoom Settings")]

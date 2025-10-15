@@ -10,7 +10,7 @@ public class IronNail : MetalBase
 {
     protected override void ActionDone(TestTube testTube)
     {
-        testTube.AddItem(Metal.Fe, 1.5f);
+        testTube.AddItem(Metal.Fe, 2f);
         Destroy(gameObject);
     }
 }

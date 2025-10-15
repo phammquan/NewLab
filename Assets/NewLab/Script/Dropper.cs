@@ -70,6 +70,7 @@ public class Dropper : MonoBehaviour, Interactable
                     transform.localRotation = Quaternion.Euler(PickUpRotation);
                     FPSController.Instance.LockMovement = false;
                 };
+                if(!source.IsOpen) return;  
                 AnimMoveLiquid(doneAction);
 
             }
