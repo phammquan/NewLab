@@ -15,7 +15,7 @@ public class TestTube : MonoBehaviour, Interactable, TagTutorial
     public bool isLiquid = false;
     public bool isItem = false;
     [SerializeField] bool canInteractMySelf;
-
+    private float delayEffect = 0;
 
     public List<Transform> posMove;
     
@@ -52,7 +52,7 @@ public class TestTube : MonoBehaviour, Interactable, TagTutorial
             Debug.Log(gameObject.name + " giờ chứa: " + liquidName);
 
             UpdateVisuals();
-            CheckForReaction();
+            CheckForReaction(delayEffect);
         }
     }
 
@@ -67,8 +67,9 @@ public class TestTube : MonoBehaviour, Interactable, TagTutorial
             }
         }
     }
-    public void AddItem(Metal metal)
+    public void AddItem(Metal metal, float delay)
     {
+        delayEffect = delay;
         int metalMeshIndex;
         if (metalDict.TryGetValue(metal, out metalMeshIndex) && !contents.Contains(metal.ToString()))
         {
@@ -76,11 +77,11 @@ public class TestTube : MonoBehaviour, Interactable, TagTutorial
             MetalRenderers[metalMeshIndex].enabled = true;
             isItem = true;
             Debug.Log(gameObject.name + " giờ chứa: " + metal.ToString());
-            CheckForReaction();
+            CheckForReaction(delay);
         }
     }
 
-    private void CheckForReaction()
+    private void CheckForReaction(float delay)
     {
         if (isItem && isLiquid)
         {
@@ -88,8 +89,15 @@ public class TestTube : MonoBehaviour, Interactable, TagTutorial
             {
                 return;
             }
-            RunReactionEffect();
+            StartCoroutine(DelayRunReactionEffect(delay));
         }
+    }
+
+    IEnumerator DelayRunReactionEffect(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        RunReactionEffect();
+
     }
 
     private void RunReactionEffect()

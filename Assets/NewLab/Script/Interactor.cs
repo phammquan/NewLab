@@ -47,11 +47,9 @@ public class Interactor : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, 5, interactableLayer))
         {
-            Debug.Log(hitInfo.collider.name);
             Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
             if (interactable == null)
             {
-                Debug.LogError("Deactive");
                 tut.SetActive(false);
                 return;
             }

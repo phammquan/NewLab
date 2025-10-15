@@ -6,7 +6,7 @@ public class Al : MetalBase
 {
     protected override void ActionDone(TestTube testTube)
     {
-        testTube.AddItem(Metal.Al);
+        testTube.AddItem(Metal.Al, 0);
         Destroy(gameObject);
     }
 }

@@ -6,7 +6,7 @@ public class Magie : MetalBase
 {
     protected override void ActionDone(TestTube testTube)
     {
-        testTube.AddItem(Metal.Mg);
+        testTube.AddItem(Metal.Mg, 0);
         Destroy(gameObject);
     }
 }
