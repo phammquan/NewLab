@@ -20,12 +20,10 @@ public class FPSController : MonoBehaviour
     private float verticalRotation = 0f;
     private Vector3 velocity;
     
-    // Zoom Variables
     private Camera playerCamera;
     private float originalFOV;
     private float targetFOV;
 
-    // Singleton Pattern (giữ nguyên)
     private static FPSController instance;
     public static FPSController Instance { get { return instance; } }
 
@@ -45,9 +43,7 @@ public class FPSController : MonoBehaviour
         {
             cameraTransform = GetComponentInChildren<Camera>().transform;
         }
-
-        // --- KHỞI TẠO BIẾN ZOOM ---
-        // Lấy component Camera từ transform đã có
+        
         playerCamera = cameraTransform.GetComponent<Camera>();
         if (playerCamera != null)
         {
@@ -58,17 +54,14 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        // Xử lý di chuyển và xoay camera
         if (!LockMovement)
         {
             HandleRotation();
             HandleMovement();
         }
 
-        // Xử lý trọng lực luôn hoạt động
         ApplyGravity();
 
-        // Xử lý zoom
         HandleZoom();
     }
 
@@ -103,12 +96,11 @@ public class FPSController : MonoBehaviour
         characterController.Move(velocity * Time.deltaTime);
     }
 
-    // --- HÀM MỚI ĐỂ XỬ LÝ ZOOM ---
     void HandleZoom()
     {
         if (playerCamera == null) return;
 
-        if (Input.GetMouseButton(1)) // 1 là chuột phải
+        if (Input.GetMouseButton(1)) 
         {
             targetFOV = originalFOV / zoomFactor;
         }
